@@ -1,0 +1,15 @@
+table, th, td {
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: lightgrey; 
+  text-align:center;
+  padding: 15px;
+  
+}
+
+.main-table{
+  border-spacing: 20px;
+  border-collapse: separate;
+  margin-left: auto;
+  margin-right: auto;
+}
