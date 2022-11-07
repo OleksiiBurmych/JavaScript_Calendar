@@ -22,6 +22,9 @@ table, th, td {
   cursor: pointer;
   display: inline-block;
 }
+h3{
+  text-align: center;
+}
 
 .btn:hover {
   background: #eee;
