@@ -39,3 +39,11 @@ h3{
 text-align: center;
 padding-top: 20px;
 }
+
+.td-info{
+background-color: #FFE4C4;
+}
+
+td:hover{
+  background-color: #D9EDFF;
+}

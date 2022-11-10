@@ -64,7 +64,7 @@ function showCalendar(month, year) {
                 let cell = document.createElement("td");
                 let cellText = document.createTextNode(date);
                 if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
-                    cell.classList.add("bg-info");
+                    cell.classList.add("td-info");
                 } // color today's date
                 cell.appendChild(cellText);
                 row.appendChild(cell);
@@ -77,16 +77,9 @@ function showCalendar(month, year) {
 
 }
 
-function generateData(year){
-    for (let index = 30; index > 0 ; index--) {
-        let option = document.createElement("option");
-        let optionText = document.createTextNode(year - index);
-        option.appendChild(optionText);
-        selectYear.appendChild(option);  
-    } 
-}
-
 window.onload = function() {
-    generateData(currentYear);
     showCalendar(currentMonth, currentYear);
   };
+
+
+  
