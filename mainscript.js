@@ -2,6 +2,7 @@
 let today = new Date();
 let currentMonth = today.getMonth();
 let currentYear = today.getFullYear();
+let day = today.getDate();
 let selectYear = document.getElementById("year");
 let selectMonth = document.getElementById("month");
 
@@ -38,7 +39,7 @@ function showCalendar(month, year) {
     tbl.innerHTML = "";
 
     // filing data about month and in the page via DOM.
-    monthAndYear.innerHTML = months[month] + " " + year;
+    monthAndYear.innerHTML =  day + " " + months[month] + " " + year ;
     selectYear.value = year;
     selectMonth.value = month;
 
@@ -52,6 +53,7 @@ function showCalendar(month, year) {
         for (let j = 0; j < 7; j++) {
             if (i === 0 && j < firstDay) {
                 let cell = document.createElement("td");
+                cell.setAttribute('onclick', "pickDate(this)");
                 let cellText = document.createTextNode("");
                 cell.appendChild(cellText);
                 row.appendChild(cell);
@@ -62,6 +64,7 @@ function showCalendar(month, year) {
 
             else {
                 let cell = document.createElement("td");
+                cell.setAttribute('onclick', "pickDate(this)");
                 let cellText = document.createTextNode(date);
                 if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
                     cell.classList.add("td-info");
@@ -82,4 +85,29 @@ window.onload = function() {
   };
 
 
+  function pickDate(element){
+    if (!element.classList.contains('td-info')){
+        element.classList.add('td-info');
+        let day = element.innerHTML;
+        getEvent(currentMonth,currentYear,day);
+    }else{
+        element.classList.remove('td-info');
+    }
+
+  }
+        function getEvent(month,year, day){
+            let url = `https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/events/${month}/${day}`;
+           
+            fetch(`https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/events/${month}/${day}`)
+            .then((response) => response.json())
+            .then((data) =>{
+                console.log(data);
+            })
+
+            
+         
+        }
+
+
+  
   
